@@ -10,7 +10,7 @@ class PageOne extends StatefulWidget {
 }
 
 class _PageOneState extends State<PageOne> {
-  ///================ GetX   reactive programing ======================//
+  ///================ Obx   reactive programing ======================//
   @override
   Widget build(BuildContext context) {
     CounterController counterController =
@@ -37,7 +37,6 @@ class _PageOneState extends State<PageOne> {
                   },
                   text: 'Increment',
                 ),
-
                 CustomButton(
                   background: Colors.amber,
                   colorText: Colors.white,
@@ -49,13 +48,11 @@ class _PageOneState extends State<PageOne> {
               ],
             ),
             Divider(),
-            GetX<CounterController>(
-              init: CounterController(),
-                builder: (value) => Center(
-                        child: Text(
-                      'Counter : ${value.counter.value}',
-                      style: TextStyle(fontSize: 20),
-                    ))),
+            Obx(() => Center(
+                    child: Text(
+                  'Counter : ${counterController.counter.value}',
+                  style: TextStyle(fontSize: 20),
+                ))),
             Divider(),
           ],
         ),
