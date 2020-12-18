@@ -13,7 +13,7 @@ class _PageOneState extends State<PageOne> {
 
 
 
-
+  ///================ GetBuilder not reactive programing ======================//
   @override
   Widget build(BuildContext context) {
     return Scaffold(
