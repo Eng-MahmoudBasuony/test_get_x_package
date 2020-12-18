@@ -1,4 +1,4 @@
-# test_get_x_package
-
+# Test GetX Package
+https://pub.dev/packages/get
  
  
