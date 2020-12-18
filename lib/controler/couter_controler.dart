@@ -32,6 +32,15 @@ class CounterController extends GetxController
     counter++;
     update(); //--like NotifierListener() in Provider
   }
-
+  void decDecrementCounter()
+  {
+    counter--;
+    update(); //--like NotifierListener() in Provider
+  }
+  void clearCounter()
+  {
+    counter=0;
+    update(); //--like NotifierListener() in Provider
+  }
 
 }
