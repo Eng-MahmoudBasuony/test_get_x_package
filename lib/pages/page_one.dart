@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:test_get_x_package/language/change_language/app_language.dart';
 
 import 'package:test_get_x_package/pages/page_two.dart';
 import 'package:test_get_x_package/widget/custom_button.dart';
@@ -10,7 +11,7 @@ class PageOne extends StatefulWidget {
 }
 
 class _PageOneState extends State<PageOne> {
-  var _selectedLanguage = 'en';
+
 
   @override
   Widget build(BuildContext context) {
@@ -28,25 +29,27 @@ class _PageOneState extends State<PageOne> {
               SizedBox(
                 height: 20,
               ),
-              DropdownButton(
-                  items: [
-                    DropdownMenuItem(
-                      child: Text('اللغه العربيه'),
-                      value: 'ar',
-                    ),
-                    DropdownMenuItem(
-                      child: Text('English'),
-                      value: 'en',
-                    )
-                  ],
-                  value: _selectedLanguage,
-                  onChanged: ((value) {
-                    setState(() {
-                      _selectedLanguage = value;
-                    });
+              GetBuilder<AppLanguage>(
+                init: AppLanguage(),
+                builder:(controller)=> DropdownButton(
+                    items: [
+                      DropdownMenuItem(
+                        child: Text('اللغه العربيه'),
+                        value: 'ar',
+                      ),
+                      DropdownMenuItem(
+                        child: Text('English'),
+                        value: 'en',
+                      )
+                    ],
+                    value: controller.appLocale,
+                    onChanged: ((value) {
 
-                    Get.updateLocale(Locale(_selectedLanguage));
-                  })),
+                      controller.changeLanguage(type: value);
+
+                      Get.updateLocale(Locale(value));
+                    })),
+              ),
               Divider(),
               Text('text_test'.tr)
             ],

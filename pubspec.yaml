@@ -29,6 +29,9 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.0
   get: ^3.23.1
+  get_storage: ^1.3.2 #for save last language
+
+
 
 dev_dependencies:
   flutter_test:
