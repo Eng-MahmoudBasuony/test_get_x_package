@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:test_get_x_package/pages/page_two.dart';
+import 'package:test_get_x_package/widget/custom_button.dart';
 
 class PageOne extends StatefulWidget {
   @override
@@ -8,6 +9,10 @@ class PageOne extends StatefulWidget {
 }
 
 class _PageOneState extends State<PageOne> {
+
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,21 +23,16 @@ class _PageOneState extends State<PageOne> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            RaisedButton(
+            CustomButton(
+              background: Colors.green,
+              colorText: Colors.white,
               onPressed: () {
-                //----------- routing by Get ----------------//
-
-                // Navigator.push(context,
-                //     MaterialPageRoute(
-                //         builder: (context) => PageTwo()));
-
-                //----------- routing by Get ----------------//
-
                 Get.to(PageTwo());
+              },
+              text: 'Open Second Page',
+            ),
+            SizedBox(height: 20,)
 
-                },
-              child: Text('Open Second Page'),
-            )
           ],
         ),
       ),
