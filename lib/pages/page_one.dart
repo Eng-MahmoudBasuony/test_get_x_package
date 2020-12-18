@@ -10,12 +10,11 @@ class PageOne extends StatefulWidget {
 }
 
 class _PageOneState extends State<PageOne> {
-
-
-
-  ///================ GetBuilder not reactive programing ======================//
+  ///================ GetX   reactive programing ======================//
   @override
   Widget build(BuildContext context) {
+    CounterController counterController =
+        Get.put(CounterController()); //dependency injection
     return Scaffold(
       appBar: AppBar(
         title: Text('Page one'),
@@ -24,56 +23,39 @@ class _PageOneState extends State<PageOne> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(height: 20,),
-            GetBuilder<CounterController>(
-              init: CounterController(),
-              builder: (value)=> CustomButton(
-                background: Colors.green,
-                colorText: Colors.white,
-                onPressed: () {
-                  Get.to(PageTwo());
-                },
-                text: 'Open Second Page',
-              ),
+            SizedBox(
+              height: 20,
             ),
-            Divider(),
-            SizedBox(height: 20,),
-            GetBuilder<CounterController>(
-              init: CounterController(),
-              builder: (value)=> Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
                 CustomButton(
                   background: Colors.blue,
                   colorText: Colors.white,
-                  onPressed: ()
-                  {
-                    value.inCrement();
+                  onPressed: () {
+                    counterController.inCrement();
                   },
                   text: 'Increment',
                 ),
+
                 CustomButton(
-                  background: Colors.red,
+                  background: Colors.amber,
                   colorText: Colors.white,
-                  onPressed: ()
-                  {
-                    value.clearCounter();
+                  onPressed: () {
+                    counterController.decDecrementCounter();
                   },
-                  text: 'Clear',
+                  text: 'Decrement',
                 ),
-                  CustomButton(
-                    background: Colors.amber,
-                    colorText: Colors.white,
-                    onPressed: ()
-                    {
-                      value.decDecrementCounter();
-                    },
-                    text: 'Decrement',
-                  ),
-              ],),
+              ],
             ),
-            GetBuilder<CounterController>(
-                builder:(value)=> Center(child: Text('Counter : ${value.counter}',style: TextStyle(fontSize: 20),))),
+            Divider(),
+            GetX<CounterController>(
+              init: CounterController(),
+                builder: (value) => Center(
+                        child: Text(
+                      'Counter : ${value.counter.value}',
+                      style: TextStyle(fontSize: 20),
+                    ))),
             Divider(),
           ],
         ),

@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 class CounterController extends GetxController
 {
 
-  int counter=0;
+  var counter=0.obs; //RXObject (Observable)
 
   //--  call after Controller like is initState for StatefulWidget --//
   @override
@@ -30,17 +30,13 @@ class CounterController extends GetxController
   void inCrement()
   {
     counter++;
-    update(); //--like NotifierListener() in Provider
+
   }
   void decDecrementCounter()
   {
     counter--;
-    update(); //--like NotifierListener() in Provider
+
   }
-  void clearCounter()
-  {
-    counter=0;
-    update(); //--like NotifierListener() in Provider
-  }
+
 
 }
