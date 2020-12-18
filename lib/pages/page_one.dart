@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:test_get_x_package/controler/couter_controler.dart';
+
 import 'package:test_get_x_package/pages/page_two.dart';
 import 'package:test_get_x_package/widget/custom_button.dart';
 
@@ -10,51 +10,47 @@ class PageOne extends StatefulWidget {
 }
 
 class _PageOneState extends State<PageOne> {
-  ///================ Obx   reactive programing ======================//
+  var _selectedLanguage = 'en';
+
   @override
   Widget build(BuildContext context) {
-    CounterController counterController =
-        Get.put(CounterController()); //dependency injection
     return Scaffold(
       appBar: AppBar(
         title: Text('Page one'),
       ),
       body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SizedBox(
-              height: 20,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                CustomButton(
-                  background: Colors.blue,
-                  colorText: Colors.white,
-                  onPressed: () {
-                    counterController.inCrement();
-                  },
-                  text: 'Increment',
-                ),
-                CustomButton(
-                  background: Colors.amber,
-                  colorText: Colors.white,
-                  onPressed: () {
-                    counterController.decDecrementCounter();
-                  },
-                  text: 'Decrement',
-                ),
-              ],
-            ),
-            Divider(),
-            Obx(() => Center(
-                    child: Text(
-                  'Counter : ${counterController.counter.value}',
-                  style: TextStyle(fontSize: 20),
-                ))),
-            Divider(),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: 20,
+              ),
+              DropdownButton(
+                  items: [
+                    DropdownMenuItem(
+                      child: Text('اللغه العربيه'),
+                      value: 'ar',
+                    ),
+                    DropdownMenuItem(
+                      child: Text('English'),
+                      value: 'en',
+                    )
+                  ],
+                  value: _selectedLanguage,
+                  onChanged: ((value) {
+                    setState(() {
+                      _selectedLanguage = value;
+                    });
+
+                    Get.updateLocale(Locale(_selectedLanguage));
+                  })),
+              Divider(),
+              Text('text_test'.tr)
+            ],
+          ),
         ),
       ),
     );
