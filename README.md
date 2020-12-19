@@ -1,11 +1,22 @@
 # Test GetX Package
 https://pub.dev/packages/get
  
- <h1>Note</h1>
+ #  Note 
  
+ 
+Each commit in this project is an example that illustrates some of the special benefits of the GetX package like
 
-$$
-Each commit in this project is an example that illustrates some of the special benefits of the GetX package
-$$
+  - simple translation app 2 language AND save last language
+  - simple translation app 2 language use GetX
+  - simple ex state management (Obx)
+  - simple ex state management (GetX)
+  - simple ex state management (GetBuilder)
+  - Easy Navigation
+
+License
+----
+
+MIT
 
 
+**Free Software, Hell Yeah!**
